@@ -1,0 +1,17 @@
+[
+    {
+	"chain" : "POSTROUTING",
+	"source" : "uzsrv",
+	"target" : "SNAT",
+	"to" : "192.167.206.124",
+	"oface" : "eth0.206"
+    },
+    {
+	"chain" : "PREROUTING",
+	"destination" : "fw",
+	"target" : "DNAT",
+	"to" : "192.167.206.124:22",
+	"protocol" : "tcp",
+	"dport" : "22"
+    }
+]

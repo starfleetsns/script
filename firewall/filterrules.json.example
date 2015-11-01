@@ -1,0 +1,33 @@
+{
+    "forward": [
+        {
+            "destination": "uzsrv",
+            "source": "sns",
+            "target": "ACCEPT"
+        },
+        {
+            "source": "uzsrv",
+            "target": "ACCEPT"
+        }
+    ],
+    "input": [
+    	{
+	    "iface" : "lo",		
+	    "target" : "ACCEPT"
+	},
+        {
+            "dport": "33",
+            "protocol": "tcp",
+            "source": "sns",
+            "target": "ACCEPT"
+        }
+    ],
+    "output": [
+        {
+            "destination": "all",
+            "dport": "53",
+            "protocol": "udp",
+            "target": "REJECT"
+        }
+    ]
+}
