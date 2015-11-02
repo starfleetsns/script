@@ -1,0 +1,28 @@
+---
+- hosts:
+  - timpano
+  - acconci
+  vars:
+    ciphers:
+      - "dsa"
+      - "ecdsa"
+      - "ed25519"
+      - "rsa"
+
+  tasks:
+  - name: ensure that the key directory is here
+    file: path=/var/uz/private/ssh_pub_keys state=directory owner=root group=root mode=755
+  - name: copy private keys if there aren't any
+    copy: src=/root/key/client/ssh_pub/ssh_host_{{ item }}_key dest=/var/uz/private/ssh_pub_keys/ssh_host_{{ item }}_key owner=root group=root mode=700
+    with_items: ciphers
+    notify:
+    - restart sshpub4
+    - restart sshpub5
+  - name: copy public keys if there aren't any
+    copy: src=/root/key/client/ssh_pub/ssh_host_{{ item }}_key.pub dest=/var/uz/private/ssh_pub_keys/ssh_host_{{ item }}_key.pub owner=root group=root mode=744
+    with_items: ciphers
+  handlers:
+  - name: restart sshpub4
+    service: name=sshpub4.socket state=restarted
+  - name: restart sshpub5
+    service: name=sshpub5.socket state=restarted
