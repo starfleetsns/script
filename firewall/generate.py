@@ -153,8 +153,8 @@ iptables -t mangle -X
 
 ip6tables -F
 ip6tables -X
-#ip6tables -t nat -F
-#ip6tables -t nat -X
+ip6tables -t nat -F
+ip6tables -t nat -X
 ip6tables -t mangle -F
 ip6tables -t mangle -X
 
