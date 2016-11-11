@@ -10,10 +10,14 @@
     file: path=/local/utils state=directory owner=root group=root mode=755
   - name: ensure the admins directory is there
     file: path=/local/admins state=directory owner=root group=root mode=700
+  - name: ensure the games directory is there
+    file: path=/local/games state=directory owner=root group=root mode=755
   - name: remove utilis directory
     file: path=/local/utilis state=absent
   
   - name: sync utils
-    synchronize: src=/root/client/local/utils dest=/local/ delete=yes compress=no
+    synchronize: src=/srv/section31/client/local/utils dest=/local/ delete=yes compress=no
   - name: sync admins
-    synchronize: src=/root/client/local/admins dest=/local/ delete=yes compress=no
+    synchronize: src=/srv/section31/client/local/admins dest=/local/ delete=yes compress=no
+  - name: sync games
+    synchronize: src=/srv/section31/client/local/games dest=/local/ delete=yes compress=no

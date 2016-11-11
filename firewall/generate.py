@@ -247,7 +247,7 @@ ip6tables -P FORWARD DROP
                 if 'cstate' in rule:
                     rulefilter+=" -m conntrack --cstate "+rule['cstate']
                 if 'custom' in rule:
-                    rulefilter+=" "+custom 
+                    rulefilter+=" "+rule['custom']
                 
                 for source4 in sources4:
                     for destination4 in destinations4:
