@@ -1,3 +1,5 @@
 *~
 firewall/*.json
+firewall/newrules
+firewall/objects.json
 
